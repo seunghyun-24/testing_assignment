@@ -1,0 +1,10 @@
+/Users/seunghyun/Documents/experience/24-1R/testing/rust-cov/target/debug/deps/libchalk_rs-4e981a0b08e73efc.rmeta: /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/lib.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/ansi_chalk.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/basic_chalk.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/rgb_chalk.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/style.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/utils.rs
+
+/Users/seunghyun/Documents/experience/24-1R/testing/rust-cov/target/debug/deps/chalk_rs-4e981a0b08e73efc.d: /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/lib.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/ansi_chalk.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/basic_chalk.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/rgb_chalk.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/style.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/utils.rs
+
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/lib.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/ansi_chalk.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/basic_chalk.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/rgb_chalk.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/style.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/chalk_rs-1.0.1/src/utils.rs:

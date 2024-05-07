@@ -1,0 +1,62 @@
+extern crate syn;
+extern crate quote;
+extern crate serde_json;
+
+use std::fs;
+use std::path::Path;
+use syn::{visit::{self, Visit}, ItemFn};
+
+struct CoverageData {
+    funcs: Vec<bool>,
+    stmts: Vec<bool>,
+    branches: Vec<bool>,
+}
+
+impl CoverageData {
+    pub fn new() -> Self {
+        CoverageData {
+            funcs: Vec::new(),
+            stmts: Vec::new(),
+            branches: Vec::new(),
+        }
+    }
+
+    fn mark_function(&mut self, id: usize) {
+        if id >= self.funcs.len() {
+            self.funcs.resize(id + 1, false);
+        }
+        self.funcs[id] = true;
+    }
+
+    // Additional methods for marking statements and branches
+}
+
+struct RustVisitor;
+
+impl<'ast> Visit<'ast> for RustVisitor {
+    fn visit_item_fn(&mut self, i: &'ast ItemFn) {
+        println!("Function: {:?}", i.sig.ident);
+        // Logic to mark function as visited
+        visit::visit_item_fn(self, i);
+    }
+
+    // Implement visits for statements and branches
+}
+
+fn main() {
+    let args: Vec<String> = std::env::args().collect();
+    if args.len() < 3 {
+        eprintln!("Usage: {} <source.rs> <input.json>", args[0]);
+        std::process::exit(1);
+    }
+
+    let src_path = Path::new(&args[1]);
+    let src_code = fs::read_to_string(src_path).expect("Could not read source file");
+
+    let ast = syn::parse_file(&src_code).expect("Failed to parse Rust source file");
+
+    let mut visitor = RustVisitor;
+    visitor.visit_file(&ast);
+
+    // Logic to run coverage based on input.json
+}
