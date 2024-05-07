@@ -1,0 +1,10 @@
+/Users/seunghyun/Documents/experience/24-1R/testing/rust-llvm/target/llvm-cov-target/debug/deps/libshared_child-3a62df05b71e523d.rmeta: /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/lib.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/mod.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/unix.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/unix.rs
+
+/Users/seunghyun/Documents/experience/24-1R/testing/rust-llvm/target/llvm-cov-target/debug/deps/libshared_child-3a62df05b71e523d.rlib: /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/lib.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/mod.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/unix.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/unix.rs
+
+/Users/seunghyun/Documents/experience/24-1R/testing/rust-llvm/target/llvm-cov-target/debug/deps/shared_child-3a62df05b71e523d.d: /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/lib.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/mod.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/unix.rs /Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/unix.rs
+
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/lib.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/mod.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/sys/unix.rs:
+/Users/seunghyun/.cargo/registry/src/index.crates.io-6f17d22bba15001f/shared_child-1.0.0/src/unix.rs:

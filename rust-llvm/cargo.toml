@@ -1,0 +1,11 @@
+[package]
+name = "rust-cov"
+version = "0.6.9"
+rust-version = "1.70"
+edition = "2021"
+repository = ""
+description = """ """
+
+[profile.release]
+debug = true
+
