@@ -1,5 +1,3 @@
-// #[allow(dead_code)]
-
 pub fn func_sort(mut array: Vec<i32>) -> Vec<i32> {
     let len = array.len();
     for i in 0..len {
@@ -27,12 +25,12 @@ mod tests {
     //     assert_eq!(func_sort(input), expected_output);
     // }
 
-    #[test] 
-    fn test_sort_empty() {
-        let input = vec![];
-        let expected_output = vec![];
-        assert_eq!(func_sort(input), expected_output);
-    }
+    // #[test] 
+    // fn test_sort_empty() {
+    //     let input = vec![];
+    //     let expected_output = vec![];
+    //     assert_eq!(func_sort(input), expected_output);
+    // }
 
     // #[test]
     // fn test_sort_double() {
