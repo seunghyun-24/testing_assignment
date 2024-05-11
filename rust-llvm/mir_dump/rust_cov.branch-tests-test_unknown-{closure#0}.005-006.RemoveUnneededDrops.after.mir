@@ -1,0 +1,18 @@
+// MIR for `tests::test_unknown::{closure#0}` after RemoveUnneededDrops
+
+fn tests::test_unknown::{closure#0}(_1: &{closure@src/branch.rs:48:5: 50:6}) -> Result<(), String> {
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _2: ();
+
+    bb0: {
+        _2 = tests::test_unknown() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = assert_test_result::<()>(const ()) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}

@@ -1,0 +1,167 @@
+// MIR for `example` after RemovePlaceMention
+
+fn example(_1: i32) -> i32 {
+    debug x => _1;
+    let mut _0: i32;
+    let mut _2: i32;
+    let mut _3: bool;
+    let mut _4: i32;
+    let _5: i32;
+    let _6: ();
+    let _7: ();
+    let mut _8: std::fmt::Arguments<'_>;
+    let mut _9: &[&str];
+    let mut _10: &[&str; 2];
+    let _11: &[&str; 2];
+    let _12: [&str; 2];
+    let mut _13: &[core::fmt::rt::Argument<'_>];
+    let mut _14: &[core::fmt::rt::Argument<'_>; 1];
+    let _15: &[core::fmt::rt::Argument<'_>; 1];
+    let _16: [core::fmt::rt::Argument<'_>; 1];
+    let mut _17: core::fmt::rt::Argument<'_>;
+    let mut _18: &&i32;
+    let _19: &&i32;
+    let _20: &i32;
+    let mut _21: &[core::fmt::rt::Placeholder];
+    let mut _22: &[core::fmt::rt::Placeholder; 1];
+    let _23: &[core::fmt::rt::Placeholder; 1];
+    let _24: [core::fmt::rt::Placeholder; 1];
+    let mut _25: core::fmt::rt::Placeholder;
+    let mut _26: core::fmt::rt::Alignment;
+    let mut _27: core::fmt::rt::Count;
+    let mut _28: core::fmt::rt::Count;
+    let mut _29: core::fmt::rt::UnsafeArg;
+    scope 1 {
+        debug tmp => _5;
+        let mut _30: &[&str; 2];
+    }
+
+    coverage ExpressionId(0) => Expression { lhs: Counter(0), op: Subtract, rhs: Counter(1) };
+    coverage ExpressionId(1) => Expression { lhs: Counter(1), op: Add, rhs: Expression(0) };
+    coverage Code(Counter(0)) => src/main.rs:6:1 - 6:27;
+    coverage Code(Expression(1)) => src/main.rs:7:5 - 7:9;
+    coverage Code(Counter(0)) => src/main.rs:8:8 - 8:13;
+    coverage Code(Counter(1)) => src/main.rs:9:9 - 9:11;
+    coverage Code(Expression(0)) => src/main.rs:11:9 - 11:12;
+    coverage Code(Expression(1)) => src/main.rs:14:1 - 14:2;
+
+    bb0: {
+        Coverage::CounterIncrement(0);
+        StorageLive(_2);
+        StorageLive(_3);
+        StorageLive(_4);
+        _4 = _1;
+        _3 = Gt(move _4, const 0_i32);
+        switchInt(move _3) -> [0: bb2, otherwise: bb1];
+    }
+
+    bb1: {
+        Coverage::CounterIncrement(1);
+        StorageDead(_4);
+        _2 = const 10_i32;
+        goto -> bb3;
+    }
+
+    bb2: {
+        Coverage::ExpressionUsed(0);
+        StorageDead(_4);
+        _2 = const -10_i32;
+        goto -> bb3;
+    }
+
+    bb3: {
+        Coverage::ExpressionUsed(1);
+        StorageDead(_3);
+        StorageLive(_5);
+        _5 = _2;
+        StorageLive(_6);
+        StorageLive(_7);
+        StorageLive(_8);
+        StorageLive(_9);
+        StorageLive(_10);
+        StorageLive(_11);
+        _30 = const example::promoted[0];
+        _11 = &(*_30);
+        _10 = &(*_11);
+        _9 = move _10 as &[&str] (PointerCoercion(Unsize));
+        StorageDead(_10);
+        StorageLive(_13);
+        StorageLive(_14);
+        StorageLive(_15);
+        StorageLive(_16);
+        StorageLive(_17);
+        StorageLive(_18);
+        StorageLive(_19);
+        StorageLive(_20);
+        _20 = &_5;
+        _19 = &_20;
+        _18 = &(*_19);
+        _17 = core::fmt::rt::Argument::<'_>::new_debug::<&i32>(move _18) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        StorageDead(_18);
+        _16 = [move _17];
+        StorageDead(_17);
+        _15 = &_16;
+        _14 = &(*_15);
+        _13 = move _14 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        StorageDead(_14);
+        StorageLive(_21);
+        StorageLive(_22);
+        StorageLive(_23);
+        StorageLive(_24);
+        StorageLive(_25);
+        StorageLive(_26);
+        _26 = core::fmt::rt::Alignment::Unknown;
+        StorageLive(_27);
+        _27 = core::fmt::rt::Count::Implied;
+        StorageLive(_28);
+        _28 = core::fmt::rt::Count::Implied;
+        _25 = core::fmt::rt::Placeholder::new(const 0_usize, const ' ', move _26, const 4_u32, move _27, move _28) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        StorageDead(_28);
+        StorageDead(_27);
+        StorageDead(_26);
+        _24 = [move _25];
+        StorageDead(_25);
+        _23 = &_24;
+        _22 = &(*_23);
+        _21 = move _22 as &[core::fmt::rt::Placeholder] (PointerCoercion(Unsize));
+        StorageDead(_22);
+        StorageLive(_29);
+        _29 = core::fmt::rt::UnsafeArg::new() -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _8 = Arguments::<'_>::new_v1_formatted(move _9, move _13, move _21, move _29) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        StorageDead(_29);
+        StorageDead(_21);
+        StorageDead(_13);
+        StorageDead(_9);
+        _7 = _eprint(move _8) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        StorageDead(_8);
+        StorageDead(_24);
+        StorageDead(_23);
+        StorageDead(_20);
+        StorageDead(_19);
+        StorageDead(_16);
+        StorageDead(_15);
+        StorageDead(_11);
+        StorageDead(_7);
+        _6 = const ();
+        StorageDead(_6);
+        _0 = _5;
+        StorageDead(_5);
+        StorageDead(_2);
+        return;
+    }
+}

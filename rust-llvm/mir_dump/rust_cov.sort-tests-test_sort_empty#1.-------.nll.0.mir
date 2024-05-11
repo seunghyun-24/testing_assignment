@@ -1,0 +1,257 @@
+// MIR for `tests::test_sort_empty` 0 nll
+
+| Free Region Mapping
+| '?0 | Global | ['?0, '?1]
+| '?1 | Local | ['?1]
+|
+| Inferred Region Values
+| '?0 | U0 | {bb0[0..=1], bb1[0..=2], bb2[0..=7], bb3[0..=17], bb4[0], bb5[0..=6], bb6[0..=18], bb7[0..=4], bb8[0..=1], bb9[0..=1], bb10[0], bb11[0], bb12[0], bb13[0], bb14[0], '?0, '?1}
+| '?1 | U0 | {bb0[0..=1], bb1[0..=2], bb2[0..=7], bb3[0..=17], bb4[0], bb5[0..=6], bb6[0..=18], bb7[0..=4], bb8[0..=1], bb9[0..=1], bb10[0], bb11[0], bb12[0], bb13[0], bb14[0], '?1}
+| '?2 | U0 | {bb3[1..=17], bb4[0], bb6[0..=18]}
+| '?3 | U0 | {bb3[3..=17], bb4[0], bb6[0..=18]}
+| '?4 | U0 | {bb3[9..=17], bb4[0], bb6[0..=18]}
+| '?5 | U0 | {bb3[11..=17], bb4[0], bb6[0..=18]}
+| '?6 | U0 | {bb3[14..=17]}
+| '?7 | U0 | {bb3[16..=17]}
+| '?8 | U0 | {bb6[10..=18]}
+| '?9 | U0 | {bb6[11..=18]}
+| '?10 | U0 | {bb6[14..=18]}
+| '?11 | U0 | {bb6[15..=18]}
+| '?12 | U0 | {bb6[17..=18]}
+| '?13 | U0 | {bb3[5..=17], bb4[0], bb6[0..=18]}
+| '?14 | U0 | {bb3[5..=17], bb4[0], bb6[0..=18]}
+| '?15 | U0 | {bb3[2..=17], bb4[0], bb6[0..=18]}
+| '?16 | U0 | {bb3[4..=17], bb4[0], bb6[0..=18]}
+| '?17 | U0 | {bb3[10..=17], bb4[0], bb6[0..=18]}
+| '?18 | U0 | {bb3[12..=17], bb4[0], bb6[0..=18]}
+| '?19 | U0 | {bb3[15..=17]}
+| '?20 | U0 | {bb3[17]}
+| '?21 | U0 | {bb6[12..=18]}
+| '?22 | U0 | {bb6[11..=18]}
+| '?23 | U0 | {bb6[16..=18]}
+| '?24 | U0 | {bb6[15..=18]}
+| '?25 | U0 | {bb6[18]}
+| '?26 | U0 | {bb3[17]}
+| '?27 | U0 | {bb3[17]}
+| '?28 | U0 | {bb6[18]}
+| '?29 | U0 | {bb6[18]}
+| '?30 | U0 | {bb6[18]}
+|
+| Inference Constraints
+| '?0 live at {bb0[0..=1], bb1[0..=2], bb2[0..=7], bb3[0..=17], bb4[0], bb5[0..=6], bb6[0..=18], bb7[0..=4], bb8[0..=1], bb9[0..=1], bb10[0], bb11[0], bb12[0], bb13[0], bb14[0]}
+| '?1 live at {bb0[0..=1], bb1[0..=2], bb2[0..=7], bb3[0..=17], bb4[0], bb5[0..=6], bb6[0..=18], bb7[0..=4], bb8[0..=1], bb9[0..=1], bb10[0], bb11[0], bb12[0], bb13[0], bb14[0]}
+| '?2 live at {bb3[1]}
+| '?3 live at {bb3[3]}
+| '?4 live at {bb3[9]}
+| '?5 live at {bb3[11]}
+| '?6 live at {bb3[14]}
+| '?7 live at {bb3[16]}
+| '?8 live at {bb6[10]}
+| '?9 live at {bb6[11]}
+| '?10 live at {bb6[14]}
+| '?11 live at {bb6[15]}
+| '?12 live at {bb6[17]}
+| '?13 live at {bb3[5..=11]}
+| '?14 live at {bb3[5..=11]}
+| '?15 live at {bb3[2..=4]}
+| '?16 live at {bb3[4]}
+| '?17 live at {bb3[10..=17], bb4[0], bb6[0..=10]}
+| '?18 live at {bb3[12..=17], bb4[0], bb6[0..=14]}
+| '?19 live at {bb3[15..=17]}
+| '?20 live at {bb3[17]}
+| '?21 live at {bb6[12..=18]}
+| '?22 live at {bb6[11]}
+| '?23 live at {bb6[16..=18]}
+| '?24 live at {bb6[15]}
+| '?25 live at {bb6[18]}
+| '?26 live at {bb3[17]}
+| '?27 live at {bb3[17]}
+| '?28 live at {bb6[18]}
+| '?29 live at {bb6[18]}
+| '?30 live at {bb6[18]}
+| '?2: '?15 due to Boring at Single(bb3[1]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:38:16: 38:22 (#16)
+| '?3: '?16 due to Boring at Single(bb3[3]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:38:24: 38:31 (#16)
+| '?4: '?17 due to Assignment at Single(bb3[9]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:39:14: 39:22 (#16)
+| '?5: '?18 due to Assignment at Single(bb3[11]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:39:24: 39:33 (#16)
+| '?6: '?19 due to Boring at Single(bb3[14]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:40:22: 40:31 (#16)
+| '?7: '?20 due to Boring at Single(bb3[16]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:40:35: 40:45 (#16)
+| '?8: '?22 due to Boring at Single(bb6[10]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:60: 45:70 (#16)
+| '?9: '?21 due to Boring at Single(bb6[11]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:60: 45:70 (#16)
+| '?10: '?24 due to Boring at Single(bb6[14]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:72: 45:83 (#16)
+| '?11: '?23 due to Boring at Single(bb6[15]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:72: 45:83 (#16)
+| '?12: '?25 due to Boring at Single(bb6[17]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:85: 45:113 (#16)
+| '?13: '?4 due to Boring at Single(bb3[9]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:39:14: 39:22 (#16)
+| '?14: '?5 due to Boring at Single(bb3[11]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:39:24: 39:33 (#16)
+| '?15: '?13 due to Boring at Single(bb3[4]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:38:15: 38:32 (#16)
+| '?16: '?14 due to Boring at Single(bb3[4]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:38:15: 38:32 (#16)
+| '?17: '?6 due to Boring at Single(bb3[14]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:40:22: 40:31 (#16)
+| '?17: '?8 due to Boring at Single(bb6[10]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:60: 45:70 (#16)
+| '?18: '?7 due to Boring at Single(bb3[16]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:40:35: 40:45 (#16)
+| '?18: '?10 due to Boring at Single(bb6[14]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:72: 45:83 (#16)
+| '?19: '?26 due to Boring at Single(bb3[17]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:40:21: 40:46 (#16)
+| '?20: '?27 due to Boring at Single(bb3[17]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:40:21: 40:46 (#16)
+| '?21: '?28 due to CallArgument(Some(FnDef(DefId(2:9535 ~ core[3d24]::panicking::assert_failed), [std::vec::Vec<i32, std::alloc::Global>, std::vec::Vec<i32, std::alloc::Global>]))) at Single(bb6[18]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:21: 45:114 (#16)
+| '?22: '?9 due to Boring at Single(bb6[11]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:60: 45:70 (#16)
+| '?23: '?29 due to CallArgument(Some(FnDef(DefId(2:9535 ~ core[3d24]::panicking::assert_failed), [std::vec::Vec<i32, std::alloc::Global>, std::vec::Vec<i32, std::alloc::Global>]))) at Single(bb6[18]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:21: 45:114 (#16)
+| '?24: '?11 due to Boring at Single(bb6[15]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:72: 45:83 (#16)
+| '?25: '?30 due to CallArgument(Some(FnDef(DefId(2:9535 ~ core[3d24]::panicking::assert_failed), [std::vec::Vec<i32, std::alloc::Global>, std::vec::Vec<i32, std::alloc::Global>]))) at Single(bb6[18]) (/Users/seunghyun/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/macros/mod.rs:45:21: 45:114 (#16)
+|
+| User Type Annotations
+| 0: user_ty: Canonical { value: TypeOf(DefId(5:7066 ~ alloc[fa3c]::vec::{impl#0}::new), UserArgs { args: [^0], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(5:7064 ~ alloc[fa3c]::vec::{impl#0}), self_ty: std::vec::Vec<^1, ^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }], defining_opaque_types: [] }, span: /rustc/7d83a4c131ab9ae81a74c6fd825c827d74a2881d/library/alloc/src/macros.rs:44:36: 44:57, inferred_ty: fn() -> std::vec::Vec<i32> {std::vec::Vec::<i32>::new}
+| 1: user_ty: Canonical { value: TypeOf(DefId(5:7066 ~ alloc[fa3c]::vec::{impl#0}::new), UserArgs { args: [^0], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(5:7064 ~ alloc[fa3c]::vec::{impl#0}), self_ty: std::vec::Vec<^1, ^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }], defining_opaque_types: [] }, span: /rustc/7d83a4c131ab9ae81a74c6fd825c827d74a2881d/library/alloc/src/macros.rs:44:36: 44:57, inferred_ty: fn() -> std::vec::Vec<i32> {std::vec::Vec::<i32>::new}
+|
+fn tests::test_sort_empty() -> () {
+    let mut _0: ();
+    let _1: std::vec::Vec<i32>;
+    let _3: ();
+    let mut _4: (&std::vec::Vec<i32>, &std::vec::Vec<i32>);
+    let mut _5: &std::vec::Vec<i32>;
+    let _6: std::vec::Vec<i32>;
+    let mut _7: std::vec::Vec<i32>;
+    let mut _8: &std::vec::Vec<i32>;
+    let mut _11: bool;
+    let mut _12: &std::vec::Vec<i32>;
+    let mut _13: &std::vec::Vec<i32>;
+    let mut _14: !;
+    let _16: !;
+    let mut _17: core::panicking::AssertKind;
+    let mut _18: &std::vec::Vec<i32>;
+    let _19: &std::vec::Vec<i32>;
+    let mut _20: &std::vec::Vec<i32>;
+    let _21: &std::vec::Vec<i32>;
+    let mut _22: std::option::Option<std::fmt::Arguments<'_>>;
+    scope 1 {
+        debug input => _1;
+        let _2: std::vec::Vec<i32>;
+        scope 2 {
+            debug expected_output => _2;
+            let _9: &std::vec::Vec<i32>;
+            let _10: &std::vec::Vec<i32>;
+            scope 3 {
+                debug left_val => _9;
+                debug right_val => _10;
+                let _15: core::panicking::AssertKind;
+                scope 4 {
+                    debug kind => _15;
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        _1 = Vec::<i32>::new() -> [return: bb1, unwind: bb14];
+    }
+
+    bb1: {
+        FakeRead(ForLet(None), _1);
+        StorageLive(_2);
+        _2 = Vec::<i32>::new() -> [return: bb2, unwind: bb13];
+    }
+
+    bb2: {
+        FakeRead(ForLet(None), _2);
+        StorageLive(_3);
+        StorageLive(_4);
+        StorageLive(_5);
+        StorageLive(_6);
+        StorageLive(_7);
+        _7 = move _1;
+        _6 = sort::func_sort(move _7) -> [return: bb3, unwind: bb11];
+    }
+
+    bb3: {
+        StorageDead(_7);
+        _5 = &_6;
+        StorageLive(_8);
+        _8 = &_2;
+        _4 = (move _5, move _8);
+        StorageDead(_8);
+        StorageDead(_5);
+        PlaceMention(_4);
+        StorageLive(_9);
+        _9 = (_4.0: &std::vec::Vec<i32>);
+        StorageLive(_10);
+        _10 = (_4.1: &std::vec::Vec<i32>);
+        StorageLive(_11);
+        StorageLive(_12);
+        _12 = &(*_9);
+        StorageLive(_13);
+        _13 = &(*_10);
+        _11 = <Vec<i32> as PartialEq>::eq(move _12, move _13) -> [return: bb4, unwind: bb10];
+    }
+
+    bb4: {
+        switchInt(move _11) -> [0: bb6, otherwise: bb5];
+    }
+
+    bb5: {
+        StorageDead(_13);
+        StorageDead(_12);
+        _3 = const ();
+        StorageDead(_11);
+        StorageDead(_10);
+        StorageDead(_9);
+        drop(_6) -> [return: bb7, unwind: bb12];
+    }
+
+    bb6: {
+        StorageDead(_13);
+        StorageDead(_12);
+        StorageLive(_15);
+        _15 = core::panicking::AssertKind::Eq;
+        FakeRead(ForLet(None), _15);
+        StorageLive(_16);
+        StorageLive(_17);
+        _17 = move _15;
+        StorageLive(_18);
+        StorageLive(_19);
+        _19 = &(*_9);
+        _18 = &(*_19);
+        StorageLive(_20);
+        StorageLive(_21);
+        _21 = &(*_10);
+        _20 = &(*_21);
+        StorageLive(_22);
+        _22 = Option::<Arguments<'_>>::None;
+        _16 = core::panicking::assert_failed::<Vec<i32>, Vec<i32>>(move _17, move _18, move _20, move _22) -> bb10;
+    }
+
+    bb7: {
+        StorageDead(_6);
+        StorageDead(_4);
+        StorageDead(_3);
+        _0 = const ();
+        drop(_2) -> [return: bb8, unwind: bb13];
+    }
+
+    bb8: {
+        StorageDead(_2);
+        drop(_1) -> [return: bb9, unwind: bb14];
+    }
+
+    bb9: {
+        StorageDead(_1);
+        return;
+    }
+
+    bb10 (cleanup): {
+        drop(_6) -> [return: bb12, unwind terminate(cleanup)];
+    }
+
+    bb11 (cleanup): {
+        drop(_7) -> [return: bb12, unwind terminate(cleanup)];
+    }
+
+    bb12 (cleanup): {
+        drop(_2) -> [return: bb13, unwind terminate(cleanup)];
+    }
+
+    bb13 (cleanup): {
+        drop(_1) -> [return: bb14, unwind terminate(cleanup)];
+    }
+
+    bb14 (cleanup): {
+        resume;
+    }
+}

@@ -1,0 +1,25 @@
+// MIR for `main` before StateTransform
+
+fn main() -> () {
+    let mut _0: ();
+    let _1: std::option::Option<i32>;
+    let mut _2: &str;
+    let _3: &str;
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        StorageLive(_3);
+        _3 = const "cond";
+        _2 = &(*_3);
+        _1 = branch::function_branch(move _2, const 5_i32) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        StorageDead(_2);
+        StorageDead(_3);
+        StorageDead(_1);
+        _0 = const ();
+        return;
+    }
+}

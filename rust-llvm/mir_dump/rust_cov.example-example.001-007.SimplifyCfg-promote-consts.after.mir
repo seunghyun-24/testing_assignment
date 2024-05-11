@@ -1,0 +1,33 @@
+// MIR for `example` after SimplifyCfg-promote-consts
+
+fn example(_1: i32) -> i32 {
+    debug x => _1;
+    let mut _0: i32;
+    let mut _2: bool;
+    let mut _3: i32;
+
+    bb0: {
+        StorageLive(_2);
+        StorageLive(_3);
+        _3 = _1;
+        _2 = Gt(move _3, const 0_i32);
+        switchInt(move _2) -> [0: bb2, otherwise: bb1];
+    }
+
+    bb1: {
+        StorageDead(_3);
+        _0 = const 10_i32;
+        goto -> bb3;
+    }
+
+    bb2: {
+        StorageDead(_3);
+        _0 = const -10_i32;
+        goto -> bb3;
+    }
+
+    bb3: {
+        StorageDead(_2);
+        return;
+    }
+}

@@ -1,0 +1,62 @@
+// MIR for `tests::test_sort_multiple` before AbortUnwindingCalls
+
+const tests::test_sort_multiple: TestDescAndFn = {
+    let mut _0: test::TestDescAndFn;
+    let mut _1: test::TestDesc;
+    let mut _2: test::TestName;
+    let mut _3: std::option::Option<&str>;
+    let mut _4: test::ShouldPanic;
+    let mut _5: test::TestType;
+    let mut _6: test::TestFn;
+    let mut _7: fn() -> std::result::Result<(), std::string::String>;
+    let mut _8: {closure@src/sort.rs:45:5: 49:6};
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        _2 = StaticTestName(const "sort::tests::test_sort_multiple");
+        StorageLive(_3);
+        _3 = Option::<&str>::None;
+        StorageLive(_4);
+        _4 = test::ShouldPanic::No;
+        StorageLive(_5);
+        _5 = UnitTest;
+        _1 = TestDesc { name: move _2, ignore: const false, ignore_message: move _3, source_file: const "src/sort.rs", start_line: const 45_usize, start_col: const 8_usize, end_line: const 45_usize, end_col: const 26_usize, should_panic: move _4, compile_fail: const false, no_run: const false, test_type: move _5 };
+        StorageDead(_5);
+        StorageDead(_4);
+        StorageDead(_3);
+        goto -> bb1;
+    }
+
+    bb1: {
+        StorageDead(_2);
+        StorageLive(_6);
+        StorageLive(_7);
+        StorageLive(_8);
+        _8 = {closure@src/sort.rs:45:5: 49:6};
+        _7 = move _8 as fn() -> std::result::Result<(), std::string::String> (PointerCoercion(ClosureFnPointer(Normal)));
+        StorageDead(_8);
+        _6 = StaticTestFn(move _7);
+        StorageDead(_7);
+        _0 = TestDescAndFn { desc: move _1, testfn: move _6 };
+        goto -> bb2;
+    }
+
+    bb2: {
+        StorageDead(_6);
+        goto -> bb3;
+    }
+
+    bb3: {
+        StorageDead(_1);
+        return;
+    }
+
+    bb4 (cleanup): {
+        goto -> bb5;
+    }
+
+    bb5 (cleanup): {
+        resume;
+    }
+}

@@ -1,0 +1,24 @@
+// MIR for `tests::test_sort_multiple::{closure#0}` after ByMoveBody
+
+fn tests::test_sort_multiple::{closure#0}(_1: &{closure@src/sort.rs:45:5: 49:6}) -> Result<(), String> {
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _2: ();
+
+    bb0: {
+        StorageLive(_2);
+        _2 = tests::test_sort_multiple() -> [return: bb1, unwind: bb3];
+    }
+
+    bb1: {
+        _0 = assert_test_result::<()>(move _2) -> [return: bb2, unwind: bb3];
+    }
+
+    bb2: {
+        StorageDead(_2);
+        return;
+    }
+
+    bb3 (cleanup): {
+        resume;
+    }
+}

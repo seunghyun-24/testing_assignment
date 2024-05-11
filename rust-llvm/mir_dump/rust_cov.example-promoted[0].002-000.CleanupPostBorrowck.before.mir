@@ -1,0 +1,12 @@
+// MIR for `example::promoted[0]` before CleanupPostBorrowck
+
+const example::promoted[0]: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "[src/main.rs:7:5] if x > 0 { 10 } else { -10 } = ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}

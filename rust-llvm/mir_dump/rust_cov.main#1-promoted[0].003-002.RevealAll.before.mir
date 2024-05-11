@@ -1,0 +1,30 @@
+// MIR for `main::promoted[0]` before RevealAll
+
+const main::promoted[0]: &[&TestDescAndFn; 3] = {
+    let mut _0: &[&test::TestDescAndFn; 3];
+    let mut _1: [&test::TestDescAndFn; 3];
+    let mut _2: &test::TestDescAndFn;
+    let mut _3: &test::TestDescAndFn;
+    let mut _4: test::TestDescAndFn;
+    let mut _5: &test::TestDescAndFn;
+    let mut _6: &test::TestDescAndFn;
+    let mut _7: test::TestDescAndFn;
+    let mut _8: &test::TestDescAndFn;
+    let mut _9: &test::TestDescAndFn;
+    let mut _10: test::TestDescAndFn;
+
+    bb0: {
+        _4 = const branch::tests::test_abs;
+        _3 = &_4;
+        _2 = &(*_3);
+        _7 = const branch::tests::test_short_abs;
+        _6 = &_7;
+        _5 = &(*_6);
+        _10 = const branch::tests::test_unknown;
+        _9 = &_10;
+        _8 = &(*_9);
+        _1 = [move _2, move _5, move _8];
+        _0 = &_1;
+        return;
+    }
+}

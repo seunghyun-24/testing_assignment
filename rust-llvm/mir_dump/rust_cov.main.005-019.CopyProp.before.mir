@@ -1,0 +1,21 @@
+// MIR for `main` before CopyProp
+
+fn main() -> () {
+    let mut _0: ();
+    let _1: std::option::Option<i32>;
+    let mut _2: &str;
+    let _3: &str;
+
+    coverage Code(Counter(0)) => src/main.rs:16:1 - 34:2;
+
+    bb0: {
+        Coverage::CounterIncrement(0);
+        _3 = const "cond";
+        _2 = _3;
+        _1 = function_branch(move _2, const 5_i32) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}

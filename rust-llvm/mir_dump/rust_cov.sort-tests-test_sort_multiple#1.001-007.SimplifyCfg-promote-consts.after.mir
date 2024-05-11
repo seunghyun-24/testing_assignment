@@ -1,0 +1,237 @@
+// MIR for `tests::test_sort_multiple` after SimplifyCfg-promote-consts
+
+| User Type Annotations
+| 0: user_ty: Canonical { value: TypeOf(DefId(5:5454 ~ alloc[fa3c]::slice::{impl#0}::into_vec), UserArgs { args: [^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(5:5437 ~ alloc[fa3c]::slice::{impl#0}), self_ty: [^2] }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }], defining_opaque_types: [] }, span: /rustc/7d83a4c131ab9ae81a74c6fd825c827d74a2881d/library/alloc/src/macros.rs:50:36: 50:51, inferred_ty: fn(std::boxed::Box<[i32]>) -> std::vec::Vec<i32> {std::slice::<impl [i32]>::into_vec::<std::alloc::Global>}
+| 1: user_ty: Canonical { value: TypeOf(DefId(5:5454 ~ alloc[fa3c]::slice::{impl#0}::into_vec), UserArgs { args: [^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(5:5437 ~ alloc[fa3c]::slice::{impl#0}), self_ty: [^2] }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }], defining_opaque_types: [] }, span: /rustc/7d83a4c131ab9ae81a74c6fd825c827d74a2881d/library/alloc/src/macros.rs:50:36: 50:51, inferred_ty: fn(std::boxed::Box<[i32]>) -> std::vec::Vec<i32> {std::slice::<impl [i32]>::into_vec::<std::alloc::Global>}
+|
+fn tests::test_sort_multiple() -> () {
+    let mut _0: ();
+    let _1: std::vec::Vec<i32>;
+    let mut _2: std::boxed::Box<[i32]>;
+    let mut _3: std::boxed::Box<[i32; 7]>;
+    let mut _4: usize;
+    let mut _5: usize;
+    let mut _6: *mut u8;
+    let mut _7: std::boxed::Box<[i32; 7]>;
+    let mut _9: std::boxed::Box<[i32]>;
+    let mut _10: std::boxed::Box<[i32; 7]>;
+    let mut _11: usize;
+    let mut _12: usize;
+    let mut _13: *mut u8;
+    let mut _14: std::boxed::Box<[i32; 7]>;
+    let _15: ();
+    let mut _16: (&std::vec::Vec<i32>, &std::vec::Vec<i32>);
+    let mut _17: &std::vec::Vec<i32>;
+    let _18: std::vec::Vec<i32>;
+    let mut _19: std::vec::Vec<i32>;
+    let mut _20: &std::vec::Vec<i32>;
+    let mut _23: bool;
+    let mut _24: &std::vec::Vec<i32>;
+    let mut _25: &std::vec::Vec<i32>;
+    let mut _26: !;
+    let _28: !;
+    let mut _29: core::panicking::AssertKind;
+    let mut _30: &std::vec::Vec<i32>;
+    let _31: &std::vec::Vec<i32>;
+    let mut _32: &std::vec::Vec<i32>;
+    let _33: &std::vec::Vec<i32>;
+    let mut _34: std::option::Option<std::fmt::Arguments<'_>>;
+    scope 1 {
+        debug input => _1;
+        let _8: std::vec::Vec<i32>;
+        scope 2 {
+            debug expected_output => _8;
+            let _21: &std::vec::Vec<i32>;
+            let _22: &std::vec::Vec<i32>;
+            scope 3 {
+                debug left_val => _21;
+                debug right_val => _22;
+                let _27: core::panicking::AssertKind;
+                scope 4 {
+                    debug kind => _27;
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        StorageLive(_3);
+        _4 = SizeOf([i32; 7]);
+        _5 = AlignOf([i32; 7]);
+        _6 = alloc::alloc::exchange_malloc(move _4, move _5) -> [return: bb1, unwind: bb24];
+    }
+
+    bb1: {
+        StorageLive(_7);
+        _7 = ShallowInitBox(move _6, [i32; 7]);
+        (*_7) = [const 5_i32, const 5_i32, const 5_i32, const 8_i32, const 6_i32, const 9_i32, const 10_i32];
+        _3 = move _7;
+        _2 = move _3 as std::boxed::Box<[i32]> (PointerCoercion(Unsize));
+        drop(_3) -> [return: bb2, unwind: bb22];
+    }
+
+    bb2: {
+        drop(_7) -> [return: bb3, unwind: bb23];
+    }
+
+    bb3: {
+        StorageDead(_7);
+        StorageDead(_3);
+        _1 = slice::<impl [i32]>::into_vec::<std::alloc::Global>(move _2) -> [return: bb4, unwind: bb23];
+    }
+
+    bb4: {
+        StorageDead(_2);
+        FakeRead(ForLet(None), _1);
+        StorageLive(_8);
+        StorageLive(_9);
+        StorageLive(_10);
+        _11 = SizeOf([i32; 7]);
+        _12 = AlignOf([i32; 7]);
+        _13 = alloc::alloc::exchange_malloc(move _11, move _12) -> [return: bb5, unwind: bb21];
+    }
+
+    bb5: {
+        StorageLive(_14);
+        _14 = ShallowInitBox(move _13, [i32; 7]);
+        (*_14) = [const 5_i32, const 5_i32, const 5_i32, const 6_i32, const 8_i32, const 9_i32, const 10_i32];
+        _10 = move _14;
+        _9 = move _10 as std::boxed::Box<[i32]> (PointerCoercion(Unsize));
+        drop(_10) -> [return: bb6, unwind: bb19];
+    }
+
+    bb6: {
+        drop(_14) -> [return: bb7, unwind: bb20];
+    }
+
+    bb7: {
+        StorageDead(_14);
+        StorageDead(_10);
+        _8 = slice::<impl [i32]>::into_vec::<std::alloc::Global>(move _9) -> [return: bb8, unwind: bb20];
+    }
+
+    bb8: {
+        StorageDead(_9);
+        FakeRead(ForLet(None), _8);
+        StorageLive(_15);
+        StorageLive(_16);
+        StorageLive(_17);
+        StorageLive(_18);
+        StorageLive(_19);
+        _19 = move _1;
+        _18 = sort::func_sort(move _19) -> [return: bb9, unwind: bb17];
+    }
+
+    bb9: {
+        StorageDead(_19);
+        _17 = &_18;
+        StorageLive(_20);
+        _20 = &_8;
+        _16 = (move _17, move _20);
+        StorageDead(_20);
+        StorageDead(_17);
+        PlaceMention(_16);
+        StorageLive(_21);
+        _21 = (_16.0: &std::vec::Vec<i32>);
+        StorageLive(_22);
+        _22 = (_16.1: &std::vec::Vec<i32>);
+        StorageLive(_23);
+        StorageLive(_24);
+        _24 = &(*_21);
+        StorageLive(_25);
+        _25 = &(*_22);
+        _23 = <Vec<i32> as PartialEq>::eq(move _24, move _25) -> [return: bb10, unwind: bb16];
+    }
+
+    bb10: {
+        switchInt(move _23) -> [0: bb12, otherwise: bb11];
+    }
+
+    bb11: {
+        StorageDead(_25);
+        StorageDead(_24);
+        _15 = const ();
+        StorageDead(_23);
+        StorageDead(_22);
+        StorageDead(_21);
+        drop(_18) -> [return: bb13, unwind: bb18];
+    }
+
+    bb12: {
+        StorageDead(_25);
+        StorageDead(_24);
+        StorageLive(_27);
+        _27 = core::panicking::AssertKind::Eq;
+        FakeRead(ForLet(None), _27);
+        StorageLive(_28);
+        StorageLive(_29);
+        _29 = move _27;
+        StorageLive(_30);
+        StorageLive(_31);
+        _31 = &(*_21);
+        _30 = &(*_31);
+        StorageLive(_32);
+        StorageLive(_33);
+        _33 = &(*_22);
+        _32 = &(*_33);
+        StorageLive(_34);
+        _34 = Option::<Arguments<'_>>::None;
+        _28 = core::panicking::assert_failed::<Vec<i32>, Vec<i32>>(move _29, move _30, move _32, move _34) -> bb16;
+    }
+
+    bb13: {
+        StorageDead(_18);
+        StorageDead(_16);
+        StorageDead(_15);
+        _0 = const ();
+        drop(_8) -> [return: bb14, unwind: bb21];
+    }
+
+    bb14: {
+        StorageDead(_8);
+        drop(_1) -> [return: bb15, unwind: bb24];
+    }
+
+    bb15: {
+        StorageDead(_1);
+        return;
+    }
+
+    bb16 (cleanup): {
+        drop(_18) -> [return: bb18, unwind terminate(cleanup)];
+    }
+
+    bb17 (cleanup): {
+        drop(_19) -> [return: bb18, unwind terminate(cleanup)];
+    }
+
+    bb18 (cleanup): {
+        drop(_8) -> [return: bb21, unwind terminate(cleanup)];
+    }
+
+    bb19 (cleanup): {
+        drop(_14) -> [return: bb20, unwind terminate(cleanup)];
+    }
+
+    bb20 (cleanup): {
+        drop(_9) -> [return: bb21, unwind terminate(cleanup)];
+    }
+
+    bb21 (cleanup): {
+        drop(_1) -> [return: bb24, unwind terminate(cleanup)];
+    }
+
+    bb22 (cleanup): {
+        drop(_7) -> [return: bb23, unwind terminate(cleanup)];
+    }
+
+    bb23 (cleanup): {
+        drop(_2) -> [return: bb24, unwind terminate(cleanup)];
+    }
+
+    bb24 (cleanup): {
+        resume;
+    }
+}

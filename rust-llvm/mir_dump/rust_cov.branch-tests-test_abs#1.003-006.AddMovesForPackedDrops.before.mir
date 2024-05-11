@@ -1,0 +1,109 @@
+// MIR for `tests::test_abs` before AddMovesForPackedDrops
+
+fn tests::test_abs() -> () {
+    let mut _0: ();
+    let _1: ();
+    let mut _2: (&std::option::Option<i32>, &std::option::Option<i32>);
+    let mut _3: &std::option::Option<i32>;
+    let _4: std::option::Option<i32>;
+    let mut _5: &str;
+    let _6: &str;
+    let mut _7: &std::option::Option<i32>;
+    let _8: std::option::Option<i32>;
+    let _9: &std::option::Option<i32>;
+    let _10: &std::option::Option<i32>;
+    let mut _11: bool;
+    let mut _12: &std::option::Option<i32>;
+    let mut _13: &std::option::Option<i32>;
+    let mut _14: !;
+    let _16: !;
+    let mut _17: core::panicking::AssertKind;
+    let mut _18: &std::option::Option<i32>;
+    let _19: &std::option::Option<i32>;
+    let mut _20: &std::option::Option<i32>;
+    let _21: &std::option::Option<i32>;
+    let mut _22: std::option::Option<std::fmt::Arguments<'_>>;
+    let mut _23: &std::option::Option<i32>;
+    scope 1 {
+        debug left_val => _9;
+        debug right_val => _10;
+        let _15: core::panicking::AssertKind;
+        scope 2 {
+            debug kind => _15;
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        StorageLive(_3);
+        StorageLive(_4);
+        StorageLive(_5);
+        StorageLive(_6);
+        _6 = const "abs";
+        _5 = &(*_6);
+        _4 = branch::function_branch(move _5, const 5_i32) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        StorageDead(_5);
+        _3 = &_4;
+        StorageLive(_7);
+        _23 = const branch::tests::test_abs::promoted[0];
+        _7 = &(*_23);
+        _2 = (move _3, move _7);
+        StorageDead(_7);
+        StorageDead(_3);
+        PlaceMention(_2);
+        StorageLive(_9);
+        _9 = (_2.0: &std::option::Option<i32>);
+        StorageLive(_10);
+        _10 = (_2.1: &std::option::Option<i32>);
+        StorageLive(_11);
+        StorageLive(_12);
+        _12 = &(*_9);
+        StorageLive(_13);
+        _13 = &(*_10);
+        _11 = <Option<i32> as PartialEq>::eq(move _12, move _13) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _11) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        StorageDead(_13);
+        StorageDead(_12);
+        _1 = const ();
+        StorageDead(_11);
+        StorageDead(_10);
+        StorageDead(_9);
+        StorageDead(_6);
+        StorageDead(_4);
+        StorageDead(_2);
+        StorageDead(_1);
+        _0 = const ();
+        return;
+    }
+
+    bb4: {
+        StorageDead(_13);
+        StorageDead(_12);
+        StorageLive(_15);
+        _15 = core::panicking::AssertKind::Eq;
+        StorageLive(_16);
+        StorageLive(_17);
+        _17 = move _15;
+        StorageLive(_18);
+        StorageLive(_19);
+        _19 = &(*_9);
+        _18 = &(*_19);
+        StorageLive(_20);
+        StorageLive(_21);
+        _21 = &(*_10);
+        _20 = &(*_21);
+        StorageLive(_22);
+        _22 = Option::<Arguments<'_>>::None;
+        _16 = core::panicking::assert_failed::<Option<i32>, Option<i32>>(move _17, move _18, move _20, move _22) -> unwind continue;
+    }
+}

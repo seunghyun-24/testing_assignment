@@ -1,0 +1,12 @@
+{
+  "files": [
+    {"file": "/Users/seunghyun/Documents/experience/24-1R/testing/testing_assignment/rust-llvm/src/main.rs", "percent_covered": "100.00", "covered_lines": "1", "total_lines": "1"}
+  ],
+  "percent_covered": "100.00",
+  "covered_lines": 1,
+  "total_lines": 1,
+  "percent_low": 25,
+  "percent_high": 75,
+  "command": "rust-cov",
+  "date": "2024-05-09 15:14:14"
+}

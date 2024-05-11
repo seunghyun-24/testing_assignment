@@ -1,1 +1,0 @@
-/Users/seunghyun/Documents/experience/24-1R/testing/rust-llvm/target/debug/rust-cov: /Users/seunghyun/Documents/experience/24-1R/testing/rust-llvm/src/main.rs /Users/seunghyun/Documents/experience/24-1R/testing/rust-llvm/src/sort.rs

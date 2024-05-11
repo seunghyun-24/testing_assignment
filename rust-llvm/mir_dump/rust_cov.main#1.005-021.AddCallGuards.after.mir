@@ -1,0 +1,17 @@
+// MIR for `main` after AddCallGuards
+
+fn main() -> () {
+    let mut _0: ();
+    let mut _1: &[&test::TestDescAndFn];
+    let mut _2: &[&test::TestDescAndFn; 3];
+
+    bb0: {
+        _2 = const main::promoted[0];
+        _1 = _2 as &[&test::TestDescAndFn] (PointerCoercion(Unsize));
+        _0 = test_main_static(move _1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}

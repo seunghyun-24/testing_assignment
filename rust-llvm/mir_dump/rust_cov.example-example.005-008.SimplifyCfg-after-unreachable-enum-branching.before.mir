@@ -1,0 +1,39 @@
+// MIR for `example` before SimplifyCfg-after-unreachable-enum-branching
+
+fn example(_1: i32) -> i32 {
+    debug x => _1;
+    let mut _0: i32;
+    let mut _2: bool;
+    let mut _3: i32;
+
+    coverage ExpressionId(0) => Expression { lhs: Counter(0), op: Subtract, rhs: Counter(1) };
+    coverage ExpressionId(1) => Expression { lhs: Counter(1), op: Add, rhs: Expression(0) };
+    coverage Code(Counter(0)) => src/example.rs:1:1 - 2:13;
+    coverage Code(Counter(1)) => src/example.rs:3:9 - 3:11;
+    coverage Code(Expression(0)) => src/example.rs:5:9 - 5:12;
+    coverage Code(Expression(1)) => src/example.rs:7:1 - 7:2;
+
+    bb0: {
+        Coverage::CounterIncrement(0);
+        _3 = _1;
+        _2 = Gt(move _3, const 0_i32);
+        switchInt(move _2) -> [0: bb2, otherwise: bb1];
+    }
+
+    bb1: {
+        Coverage::CounterIncrement(1);
+        _0 = const 10_i32;
+        goto -> bb3;
+    }
+
+    bb2: {
+        Coverage::ExpressionUsed(0);
+        _0 = const -10_i32;
+        goto -> bb3;
+    }
+
+    bb3: {
+        Coverage::ExpressionUsed(1);
+        return;
+    }
+}

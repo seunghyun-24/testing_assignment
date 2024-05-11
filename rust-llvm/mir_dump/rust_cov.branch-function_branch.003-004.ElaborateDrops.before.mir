@@ -1,0 +1,243 @@
+// MIR for `branch::function_branch` before ElaborateDrops
+
+fn branch::function_branch(_1: &str, _2: i32) -> Option<i32> {
+    debug fname => _1;
+    debug arg => _2;
+    let mut _0: std::option::Option<i32>;
+    let mut _3: bool;
+    let mut _4: bool;
+    let mut _5: bool;
+    let mut _6: bool;
+    let mut _7: i32;
+    let mut _8: bool;
+    let mut _9: bool;
+    let mut _10: bool;
+    let mut _11: bool;
+    let mut _12: bool;
+    let mut _13: bool;
+    let mut _14: bool;
+    let mut _15: bool;
+    let mut _16: i32;
+    let mut _17: bool;
+    let mut _18: bool;
+    let mut _19: i32;
+    let mut _20: i32;
+    let mut _21: i32;
+    let mut _22: i32;
+    let mut _23: bool;
+    let mut _24: i32;
+    let mut _25: bool;
+    let mut _26: i32;
+    let mut _27: i32;
+    let mut _28: bool;
+    scope 1 {
+        debug b => _6;
+    }
+
+    bb0: {
+        PlaceMention(_1);
+        _5 = <str as PartialEq>::eq(_1, const "cond") -> [return: bb9, unwind continue];
+    }
+
+    bb1: {
+        _0 = Option::<i32>::None;
+        goto -> bb30;
+    }
+
+    bb2: {
+        StorageLive(_6);
+        StorageLive(_7);
+        _7 = _2;
+        _6 = Lt(move _7, const 0_i32);
+        StorageDead(_7);
+        StorageLive(_8);
+        StorageLive(_9);
+        _9 = _6;
+        switchInt(move _9) -> [0: bb11, otherwise: bb10];
+    }
+
+    bb3: {
+        _4 = <str as PartialEq>::eq(_1, const "abs") -> [return: bb8, unwind continue];
+    }
+
+    bb4: {
+        StorageLive(_18);
+        StorageLive(_19);
+        _19 = _2;
+        _18 = Ge(move _19, const 0_i32);
+        switchInt(move _18) -> [0: bb23, otherwise: bb22];
+    }
+
+    bb5: {
+        _3 = <str as PartialEq>::eq(_1, const "shortAbs") -> [return: bb7, unwind continue];
+    }
+
+    bb6: {
+        StorageLive(_24);
+        StorageLive(_25);
+        StorageLive(_26);
+        _26 = _2;
+        _25 = Ge(move _26, const 0_i32);
+        switchInt(move _25) -> [0: bb27, otherwise: bb26];
+    }
+
+    bb7: {
+        switchInt(move _3) -> [0: bb1, otherwise: bb6];
+    }
+
+    bb8: {
+        switchInt(move _4) -> [0: bb5, otherwise: bb4];
+    }
+
+    bb9: {
+        switchInt(move _5) -> [0: bb3, otherwise: bb2];
+    }
+
+    bb10: {
+        _8 = _6;
+        goto -> bb12;
+    }
+
+    bb11: {
+        _8 = const false;
+        goto -> bb12;
+    }
+
+    bb12: {
+        StorageDead(_9);
+        _6 = move _8;
+        StorageDead(_8);
+        StorageLive(_10);
+        StorageLive(_11);
+        _11 = _6;
+        switchInt(move _11) -> [0: bb14, otherwise: bb13];
+    }
+
+    bb13: {
+        _10 = const true;
+        goto -> bb15;
+    }
+
+    bb14: {
+        _10 = _6;
+        goto -> bb15;
+    }
+
+    bb15: {
+        StorageDead(_11);
+        _6 = move _10;
+        StorageDead(_10);
+        StorageLive(_12);
+        _12 = _6;
+        _6 = move _12;
+        StorageDead(_12);
+        StorageLive(_13);
+        _13 = _6;
+        _6 = Not(move _13);
+        StorageDead(_13);
+        StorageLive(_14);
+        StorageLive(_15);
+        _15 = _6;
+        switchInt(move _15) -> [0: bb17, otherwise: bb16];
+    }
+
+    bb16: {
+        _14 = _6;
+        goto -> bb18;
+    }
+
+    bb17: {
+        _14 = _6;
+        goto -> bb18;
+    }
+
+    bb18: {
+        StorageDead(_15);
+        _6 = move _14;
+        StorageDead(_14);
+        StorageLive(_16);
+        StorageLive(_17);
+        _17 = _6;
+        switchInt(move _17) -> [0: bb20, otherwise: bb19];
+    }
+
+    bb19: {
+        _16 = const 0_i32;
+        goto -> bb21;
+    }
+
+    bb20: {
+        _16 = const 1_i32;
+        goto -> bb21;
+    }
+
+    bb21: {
+        StorageDead(_17);
+        _0 = Option::<i32>::Some(move _16);
+        StorageDead(_16);
+        StorageDead(_6);
+        goto -> bb30;
+    }
+
+    bb22: {
+        StorageDead(_19);
+        StorageLive(_20);
+        _20 = _2;
+        _0 = Option::<i32>::Some(move _20);
+        StorageDead(_20);
+        goto -> bb25;
+    }
+
+    bb23: {
+        StorageDead(_19);
+        StorageLive(_21);
+        StorageLive(_22);
+        _22 = _2;
+        _23 = Eq(_22, const i32::MIN);
+        assert(!move _23, "attempt to negate `{}`, which would overflow", _22) -> [success: bb24, unwind continue];
+    }
+
+    bb24: {
+        _21 = Neg(move _22);
+        StorageDead(_22);
+        _0 = Option::<i32>::Some(move _21);
+        StorageDead(_21);
+        goto -> bb25;
+    }
+
+    bb25: {
+        StorageDead(_18);
+        goto -> bb30;
+    }
+
+    bb26: {
+        StorageDead(_26);
+        _24 = _2;
+        goto -> bb29;
+    }
+
+    bb27: {
+        StorageDead(_26);
+        StorageLive(_27);
+        _27 = _2;
+        _28 = Eq(_27, const i32::MIN);
+        assert(!move _28, "attempt to negate `{}`, which would overflow", _27) -> [success: bb28, unwind continue];
+    }
+
+    bb28: {
+        _24 = Neg(move _27);
+        StorageDead(_27);
+        goto -> bb29;
+    }
+
+    bb29: {
+        StorageDead(_25);
+        _0 = Option::<i32>::Some(move _24);
+        StorageDead(_24);
+        goto -> bb30;
+    }
+
+    bb30: {
+        return;
+    }
+}

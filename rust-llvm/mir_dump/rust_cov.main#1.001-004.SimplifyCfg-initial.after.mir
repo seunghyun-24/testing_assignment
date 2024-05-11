@@ -1,0 +1,93 @@
+// MIR for `main` after SimplifyCfg-initial
+
+fn main() -> () {
+    let mut _0: ();
+    let mut _1: &[&test::TestDescAndFn];
+    let mut _2: &[&test::TestDescAndFn; 3];
+    let _3: &[&test::TestDescAndFn; 3];
+    let _4: [&test::TestDescAndFn; 3];
+    let mut _5: &test::TestDescAndFn;
+    let _6: &test::TestDescAndFn;
+    let _7: test::TestDescAndFn;
+    let mut _8: &test::TestDescAndFn;
+    let _9: &test::TestDescAndFn;
+    let _10: test::TestDescAndFn;
+    let mut _11: &test::TestDescAndFn;
+    let _12: &test::TestDescAndFn;
+    let _13: test::TestDescAndFn;
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        StorageLive(_3);
+        StorageLive(_4);
+        StorageLive(_5);
+        StorageLive(_6);
+        StorageLive(_7);
+        _7 = const branch::tests::test_abs;
+        _6 = &_7;
+        _5 = &(*_6);
+        StorageLive(_8);
+        StorageLive(_9);
+        StorageLive(_10);
+        _10 = const branch::tests::test_short_abs;
+        _9 = &_10;
+        _8 = &(*_9);
+        StorageLive(_11);
+        StorageLive(_12);
+        StorageLive(_13);
+        _13 = const branch::tests::test_unknown;
+        _12 = &_13;
+        _11 = &(*_12);
+        _4 = [move _5, move _8, move _11];
+        StorageDead(_11);
+        StorageDead(_8);
+        StorageDead(_5);
+        _3 = &_4;
+        _2 = &(*_3);
+        _1 = move _2 as &[&test::TestDescAndFn] (PointerCoercion(Unsize));
+        StorageDead(_2);
+        _0 = test_main_static(move _1) -> [return: bb1, unwind: bb5];
+    }
+
+    bb1: {
+        StorageDead(_1);
+        drop(_13) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        StorageDead(_13);
+        StorageDead(_12);
+        drop(_10) -> [return: bb3, unwind: bb7];
+    }
+
+    bb3: {
+        StorageDead(_10);
+        StorageDead(_9);
+        drop(_7) -> [return: bb4, unwind: bb8];
+    }
+
+    bb4: {
+        StorageDead(_7);
+        StorageDead(_6);
+        StorageDead(_4);
+        StorageDead(_3);
+        return;
+    }
+
+    bb5 (cleanup): {
+        drop(_13) -> [return: bb6, unwind terminate(cleanup)];
+    }
+
+    bb6 (cleanup): {
+        drop(_10) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        drop(_7) -> [return: bb8, unwind terminate(cleanup)];
+    }
+
+    bb8 (cleanup): {
+        resume;
+    }
+}

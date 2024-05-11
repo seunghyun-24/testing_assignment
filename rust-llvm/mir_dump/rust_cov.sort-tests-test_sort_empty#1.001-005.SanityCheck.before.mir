@@ -1,0 +1,161 @@
+// MIR for `tests::test_sort_empty` before SanityCheck
+
+| User Type Annotations
+| 0: user_ty: Canonical { value: TypeOf(DefId(5:7066 ~ alloc[fa3c]::vec::{impl#0}::new), UserArgs { args: [^0], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(5:7064 ~ alloc[fa3c]::vec::{impl#0}), self_ty: std::vec::Vec<^1, ^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }], defining_opaque_types: [] }, span: /rustc/7d83a4c131ab9ae81a74c6fd825c827d74a2881d/library/alloc/src/macros.rs:44:36: 44:57, inferred_ty: fn() -> std::vec::Vec<i32> {std::vec::Vec::<i32>::new}
+| 1: user_ty: Canonical { value: TypeOf(DefId(5:7066 ~ alloc[fa3c]::vec::{impl#0}::new), UserArgs { args: [^0], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(5:7064 ~ alloc[fa3c]::vec::{impl#0}), self_ty: std::vec::Vec<^1, ^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }], defining_opaque_types: [] }, span: /rustc/7d83a4c131ab9ae81a74c6fd825c827d74a2881d/library/alloc/src/macros.rs:44:36: 44:57, inferred_ty: fn() -> std::vec::Vec<i32> {std::vec::Vec::<i32>::new}
+|
+fn tests::test_sort_empty() -> () {
+    let mut _0: ();
+    let _1: std::vec::Vec<i32>;
+    let _3: ();
+    let mut _4: (&std::vec::Vec<i32>, &std::vec::Vec<i32>);
+    let mut _5: &std::vec::Vec<i32>;
+    let _6: std::vec::Vec<i32>;
+    let mut _7: std::vec::Vec<i32>;
+    let mut _8: &std::vec::Vec<i32>;
+    let mut _11: bool;
+    let mut _12: &std::vec::Vec<i32>;
+    let mut _13: &std::vec::Vec<i32>;
+    let mut _14: !;
+    let _16: !;
+    let mut _17: core::panicking::AssertKind;
+    let mut _18: &std::vec::Vec<i32>;
+    let _19: &std::vec::Vec<i32>;
+    let mut _20: &std::vec::Vec<i32>;
+    let _21: &std::vec::Vec<i32>;
+    let mut _22: std::option::Option<std::fmt::Arguments<'_>>;
+    scope 1 {
+        debug input => _1;
+        let _2: std::vec::Vec<i32>;
+        scope 2 {
+            debug expected_output => _2;
+            let _9: &std::vec::Vec<i32>;
+            let _10: &std::vec::Vec<i32>;
+            scope 3 {
+                debug left_val => _9;
+                debug right_val => _10;
+                let _15: core::panicking::AssertKind;
+                scope 4 {
+                    debug kind => _15;
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        _1 = Vec::<i32>::new() -> [return: bb1, unwind: bb14];
+    }
+
+    bb1: {
+        FakeRead(ForLet(None), _1);
+        StorageLive(_2);
+        _2 = Vec::<i32>::new() -> [return: bb2, unwind: bb13];
+    }
+
+    bb2: {
+        FakeRead(ForLet(None), _2);
+        StorageLive(_3);
+        StorageLive(_4);
+        StorageLive(_5);
+        StorageLive(_6);
+        StorageLive(_7);
+        _7 = move _1;
+        _6 = sort::func_sort(move _7) -> [return: bb3, unwind: bb11];
+    }
+
+    bb3: {
+        StorageDead(_7);
+        _5 = &_6;
+        StorageLive(_8);
+        _8 = &_2;
+        _4 = (move _5, move _8);
+        StorageDead(_8);
+        StorageDead(_5);
+        PlaceMention(_4);
+        StorageLive(_9);
+        _9 = (_4.0: &std::vec::Vec<i32>);
+        StorageLive(_10);
+        _10 = (_4.1: &std::vec::Vec<i32>);
+        StorageLive(_11);
+        StorageLive(_12);
+        _12 = &(*_9);
+        StorageLive(_13);
+        _13 = &(*_10);
+        _11 = <Vec<i32> as PartialEq>::eq(move _12, move _13) -> [return: bb4, unwind: bb10];
+    }
+
+    bb4: {
+        switchInt(move _11) -> [0: bb6, otherwise: bb5];
+    }
+
+    bb5: {
+        StorageDead(_13);
+        StorageDead(_12);
+        _3 = const ();
+        StorageDead(_11);
+        StorageDead(_10);
+        StorageDead(_9);
+        drop(_6) -> [return: bb7, unwind: bb12];
+    }
+
+    bb6: {
+        StorageDead(_13);
+        StorageDead(_12);
+        StorageLive(_15);
+        _15 = core::panicking::AssertKind::Eq;
+        FakeRead(ForLet(None), _15);
+        StorageLive(_16);
+        StorageLive(_17);
+        _17 = move _15;
+        StorageLive(_18);
+        StorageLive(_19);
+        _19 = &(*_9);
+        _18 = &(*_19);
+        StorageLive(_20);
+        StorageLive(_21);
+        _21 = &(*_10);
+        _20 = &(*_21);
+        StorageLive(_22);
+        _22 = Option::<Arguments<'_>>::None;
+        _16 = core::panicking::assert_failed::<Vec<i32>, Vec<i32>>(move _17, move _18, move _20, move _22) -> bb10;
+    }
+
+    bb7: {
+        StorageDead(_6);
+        StorageDead(_4);
+        StorageDead(_3);
+        _0 = const ();
+        drop(_2) -> [return: bb8, unwind: bb13];
+    }
+
+    bb8: {
+        StorageDead(_2);
+        drop(_1) -> [return: bb9, unwind: bb14];
+    }
+
+    bb9: {
+        StorageDead(_1);
+        return;
+    }
+
+    bb10 (cleanup): {
+        drop(_6) -> [return: bb12, unwind terminate(cleanup)];
+    }
+
+    bb11 (cleanup): {
+        drop(_7) -> [return: bb12, unwind terminate(cleanup)];
+    }
+
+    bb12 (cleanup): {
+        drop(_2) -> [return: bb13, unwind terminate(cleanup)];
+    }
+
+    bb13 (cleanup): {
+        drop(_1) -> [return: bb14, unwind terminate(cleanup)];
+    }
+
+    bb14 (cleanup): {
+        resume;
+    }
+}

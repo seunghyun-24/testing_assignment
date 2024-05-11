@@ -9,3 +9,8 @@ description = """ """
 [profile.release]
 debug = true
 
+[profile.dev]
+opt-level = 0
+debug = true
+
+

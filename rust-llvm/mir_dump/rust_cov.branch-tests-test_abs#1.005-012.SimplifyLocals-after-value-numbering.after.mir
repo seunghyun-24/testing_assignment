@@ -1,0 +1,69 @@
+// MIR for `tests::test_abs` after SimplifyLocals-after-value-numbering
+
+fn tests::test_abs() -> () {
+    let mut _0: ();
+    let mut _1: (&std::option::Option<i32>, &std::option::Option<i32>);
+    let mut _2: &std::option::Option<i32>;
+    let _3: std::option::Option<i32>;
+    let mut _4: &str;
+    let _5: &str;
+    let mut _6: &std::option::Option<i32>;
+    let _7: &std::option::Option<i32>;
+    let _8: &std::option::Option<i32>;
+    let mut _9: bool;
+    let mut _10: &std::option::Option<i32>;
+    let mut _11: &std::option::Option<i32>;
+    let _13: !;
+    let mut _14: core::panicking::AssertKind;
+    let mut _15: &std::option::Option<i32>;
+    let _16: &std::option::Option<i32>;
+    let mut _17: &std::option::Option<i32>;
+    let _18: &std::option::Option<i32>;
+    let mut _19: std::option::Option<std::fmt::Arguments<'_>>;
+    let mut _20: &std::option::Option<i32>;
+    scope 1 {
+        debug left_val => _7;
+        debug right_val => _8;
+        let _12: core::panicking::AssertKind;
+        scope 2 {
+            debug kind => _12;
+        }
+    }
+
+    bb0: {
+        _5 = const "abs";
+        _4 = _5;
+        _3 = branch::function_branch(move _4, const 5_i32) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = &_3;
+        _20 = const branch::tests::test_abs::promoted[0];
+        _6 = _20;
+        _1 = (move _2, move _6);
+        _7 = (_1.0: &std::option::Option<i32>);
+        _8 = (_1.1: &std::option::Option<i32>);
+        _10 = _7;
+        _11 = _8;
+        _9 = <Option<i32> as PartialEq>::eq(move _10, move _11) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _9) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        return;
+    }
+
+    bb4: {
+        _12 = core::panicking::AssertKind::Eq;
+        _14 = move _12;
+        _16 = _7;
+        _15 = _16;
+        _18 = _8;
+        _17 = _18;
+        _19 = Option::<Arguments<'_>>::None;
+        _13 = core::panicking::assert_failed::<Option<i32>, Option<i32>>(move _14, move _15, move _17, move _19) -> unwind continue;
+    }
+}

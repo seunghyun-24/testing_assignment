@@ -1,0 +1,19 @@
+// MIR for `main` after runtime-optimized
+
+fn main() -> () {
+    let mut _0: ();
+    let _1: std::option::Option<i32>;
+    let _2: &str;
+
+    coverage Code(Counter(0)) => src/main.rs:16:1 - 34:2;
+
+    bb0: {
+        Coverage::CounterIncrement(0);
+        _2 = const "cond";
+        _1 = function_branch(_2, const 5_i32) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}

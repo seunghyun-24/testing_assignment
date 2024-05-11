@@ -1,0 +1,12 @@
+// MIR for `tests::test_abs::promoted[0]` after ElaborateBoxDerefs
+
+const tests::test_abs::promoted[0]: &Option<i32> = {
+    let mut _0: &std::option::Option<i32>;
+    let mut _1: std::option::Option<i32>;
+
+    bb0: {
+        _1 = Option::<i32>::Some(const 5_i32);
+        _0 = &_1;
+        return;
+    }
+}
