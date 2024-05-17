@@ -23,6 +23,7 @@ struct Coverage {
     binary_conditional_cov: BTreeMap<usize, (usize, usize, usize, usize)>,
     binary_conditional_specific_cov: BTreeMap<usize, (usize, usize, usize, usize)>,
     binary_conditional_total: usize,
+    if_stmt_cov: BTreeMap<usize, (usize, usize, usize, usize)>,
 }
 
 impl Coverage {
@@ -45,6 +46,7 @@ impl Coverage {
             binary_conditional_cov: BTreeMap::new(),
             binary_conditional_specific_cov: BTreeMap::new(),
             binary_conditional_total: 0,
+            if_stmt_cov: BTreeMap::new(),
         }
     }
 
@@ -88,6 +90,10 @@ impl Coverage {
             if let Some((right_start_l, right_start, right_end_l, right_end)) = self.binary_conditional_specific_cov.get(&right) {
                 println!("    - right: {}:{}-{}:{}", right_start_l, right_start, right_end_l, right_end);
             }
+        }
+        println!("- if stmt: {}", self.if_stmt_cov.len());
+        for (idx, (start_l, start, end_l, end)) in &self.if_stmt_cov {
+            println!("  - {}: {}:{}-{}:{}", idx, start_l, start, end_l, end);
         }
     }
 }
@@ -216,6 +222,8 @@ impl<'ast> Visit<'ast> for CoverageVisitor {
         if let Some((_, else_branch)) = &i.else_branch {
             visit::visit_expr(self, else_branch);
         }
+
+        self.coverage.if_stmt_cov.insert(self.current_branch, (i.span().start().line, i.span().start().column, i.span().end().line, i.span().end().column));
 
         //visit::visit_expr_if(self, i); 얘는 그냥 if문부터 else 끝까지를 가리킬 때 사용하게 됨
     }
