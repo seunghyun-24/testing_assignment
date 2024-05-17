@@ -22,27 +22,27 @@ fn func_func(a: i32, b: i32) -> i32 {
     abs(b)
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+// #[cfg(test)]
+// mod tests {
+//     use super::*;
 
-    #[test]
-    fn test_m1_p3() {
-        assert_eq!(func_func(-1, 3), 3);
-    }
+//     #[test]
+//     fn test_m1_p3() {
+//         assert_eq!(func_func(-1, 3), 3);
+//     }
     
-    #[test]
-    fn test_p3_p9() {
-        assert_eq!(func_func(3, 9), 9);
-    }
+//     #[test]
+//     fn test_p3_p9() {
+//         assert_eq!(func_func(3, 9), 9);
+//     }
 
-    #[test]
-    fn test_p3_p5() {
-        assert_eq!(func_func(3, 5), 5);
-    }
+//     #[test]
+//     fn test_p3_p5() {
+//         assert_eq!(func_func(3, 5), 5);
+//     }
 
-    #[test]
-    fn test_p5_m2() {
-        assert_eq!(func_func(5, -2), 2);
-    }
-}
+//     #[test]
+//     fn test_p5_m2() {
+//         assert_eq!(func_func(5, -2), 2);
+//     }
+// }

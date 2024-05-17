@@ -18,6 +18,11 @@ struct Coverage {
 
     loop_total: usize,
     macro_total: usize,
+
+    switch_cov: BTreeMap<usize, (usize, usize, usize, usize)>,
+    binary_conditional_cov: BTreeMap<usize, (usize, usize, usize, usize)>,
+    binary_conditional_specific_cov: BTreeMap<usize, (usize, usize, usize, usize)>,
+    binary_conditional_total: usize,
 }
 
 impl Coverage {
@@ -36,39 +41,54 @@ impl Coverage {
 
             loop_total: 0,
             macro_total: 0,
+            switch_cov: BTreeMap::new(),
+            binary_conditional_cov: BTreeMap::new(),
+            binary_conditional_specific_cov: BTreeMap::new(),
+            binary_conditional_total: 0,
         }
     }
 
     fn report(&self) {
-        println!("Coverage:");
-        println!("- func: {}/{} ({:.2}%)", self.func_cov.len(), self.func_total, 
-                 self.func_cov.len() as f64 / self.func_total as f64 * 100.0);
+        println!("AST:");
+        println!("- func: {}", self.func_cov.len());
         for (idx, (name, (start_l, start, end_l, end))) in &self.func_cov {
             println!("  - {}: {}: {}:{}-{}:{}", idx, name, start_l, start, end_l, end);
         }
-        println!("- stmt: {}/{} ({:.2}%)", self.stmt_cov.len(), self.stmt_total, 
-                 self.stmt_cov.len() as f64 / self.stmt_total as f64 * 100.0);
+        println!("- stmt: {}", self.stmt_cov.len());
         for (idx, (start_l, start, end_l, end)) in &self.stmt_cov {
             println!("  - {}: {}:{}-{}:{}", idx, start_l, start, end_l, end);
         }
-        println!("- branch: {}/{} ({:.2}%)", self.branch_cov.len(), self.branch_total, 
-                 self.branch_cov.len() as f64 / self.branch_total as f64 * 100.0);
+        println!("- branch: {}", self.branch_cov.len());
         for (idx, (start_l, start, end_l, end)) in &self.branch_cov {
             println!("  - {}: {}:{}-{}:{}", idx, start_l, start, end_l, end);
         }
 
         println!("\nFor detail check:");
-        println!("- loop: {}/{} ({:.2}%)", self.loop_cov.len(), self.loop_total, 
-                 self.loop_cov.len() as f64 / self.loop_total as f64 * 100.0);
+        println!("- loop: {}", self.loop_cov.len());
         for (idx, (start_l, start, end_l, end)) in &self.loop_cov {
             println!("  - {}: {}:{}-{}:{}", idx, start_l, start, end_l, end);
         }
-        println!("- macro: {}/{} ({:.2}%)", self.macro_cov.len(), self.macro_total, 
-                 self.macro_cov.len() as f64 / self.macro_total as f64 * 100.0);
+        println!("- macro: {}", self.macro_cov.len());
         for (idx, (start_l, start, end_l, end)) in &self.macro_cov {
             println!("  - {}: {}:{}-{}:{}", idx, start_l, start, end_l, end);
         }
+        println!("- switch: {}", self.switch_cov.len());
+        for (idx, (start_l, start, end_l, end)) in &self.switch_cov {
+            println!("  - have {} switch cases : {}:{}-{}:{}", idx, start_l, start, end_l, end);
+        }
+        println!("- binary conditional: {}", self.binary_conditional_cov.len());
+        for (idx, (start_l, start, end_l, end)) in &self.binary_conditional_cov {
+            println!("  - {}: {}:{}-{}:{}", idx, start_l, start, end_l, end);
 
+            let left = idx * 2 - 1;
+            if let Some((left_start_l, left_start, left_end_l, left_end)) = self.binary_conditional_specific_cov.get(&left) {
+                println!("    - left: {}:{}-{}:{}", left_start_l, left_start, left_end_l, left_end);
+            }
+            let right = idx * 2;
+            if let Some((right_start_l, right_start, right_end_l, right_end)) = self.binary_conditional_specific_cov.get(&right) {
+                println!("    - right: {}:{}-{}:{}", right_start_l, right_start, right_end_l, right_end);
+            }
+        }
     }
 }
 
@@ -80,6 +100,7 @@ struct CoverageVisitor {
     
     current_loop: usize,
     current_macro: usize,
+    current_binary_conditional: usize,
 }
 
 impl<'ast> Visit<'ast> for CoverageVisitor {
@@ -156,6 +177,28 @@ impl<'ast> Visit<'ast> for CoverageVisitor {
 
     //     visit::visit_local_init(self, s);
     // }
+
+    fn visit_expr_binary(&mut self, i: &'ast syn::ExprBinary) {
+        let span_start_line = i.span().start().line;
+        let span_start = i.span().start().column;
+        let span_end_line = i.span().end().line;
+        let span_end = i.span().end().column;
+
+        match i.op {
+            syn::BinOp::And(_) | syn::BinOp::Or(_) => {
+                self.current_binary_conditional += 1;
+                self.coverage.binary_conditional_total += 1;
+                self.coverage.binary_conditional_cov.insert(self.current_binary_conditional, (span_start_line, span_start, span_end_line, span_end));
+                
+               //visit::visit_expr(self, i.left.as_ref());
+                //visit::visit_expr(self, i.right.as_ref());
+                self.coverage.binary_conditional_specific_cov.insert(self.current_binary_conditional * 2 - 1, (i.left.span().start().line, i.left.span().start().column, i.left.span().end().line, i.left.span().end().column));
+                self.coverage.binary_conditional_specific_cov.insert(self.current_binary_conditional * 2 , (i.right.span().start().line, i.right.span().start().column, i.right.span().end().line, i.right.span().end().column));
+            }
+            _ => {}
+        }
+        //visit::visit_expr_binary(self, i);
+    }
     
     fn visit_expr_if(&mut self, i: &'ast ExprIf) {
         let span_start_line = i.cond.span().start().line;
@@ -187,7 +230,13 @@ impl<'ast> Visit<'ast> for CoverageVisitor {
         self.coverage.branch_total += 1;
         self.coverage.branch_cov.insert(self.current_branch, (span_start_line, span_start, span_end_line, span_end));
 
-        syn::visit::visit_expr_match(self, i);
+        visit::visit_expr(self, &i.expr);
+        let _ = &i.arms.iter().for_each(|arm| {
+            visit::visit_arm(self, arm);
+        });
+        self.coverage.switch_cov.insert(i.arms.len(), (span_start_line, span_start, span_end_line, span_end));
+
+        //syn::visit::visit_expr_match(self, i);
     }
 
 
@@ -259,10 +308,24 @@ impl<'ast> Visit<'ast> for CoverageVisitor {
         visit::visit_stmt_macro(self, i);
     
     }
+
+    fn visit_expr_macro(&mut self, i: &'ast syn::ExprMacro) {
+        let span_start_line = i.span().start().line;
+        let span_start = i.span().start().column;
+        let span_end_line = i.span().end().line;
+        let span_end = i.span().end().column;
+
+        self.current_macro += 1;
+        self.coverage.macro_total += 1;
+        self.coverage.macro_cov.insert(self.current_macro, (span_start_line, span_start, span_end_line, span_end));
+
+        visit::visit_expr_macro(self, i);
+    }
+
 }
 
 fn main() {
-    let contents = fs::read_to_string("example/branch.rs").expect("Something went wrong reading the file");
+    let contents = fs::read_to_string("example/binary_op.rs").expect("Something went wrong reading the file");
     let syntax = syn::parse_file(&contents).expect("Unable to parse file");
 
     let mut visitor = CoverageVisitor {
@@ -273,6 +336,7 @@ fn main() {
 
         current_loop: 0,
         current_macro: 0,
+        current_binary_conditional: 0,
     };
     visitor.visit_file(&syntax);
 

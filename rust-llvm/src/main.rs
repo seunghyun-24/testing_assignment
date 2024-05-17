@@ -1,7 +1,11 @@
-mod sort;
+// mod sort;
 // mod branch;
 // mod func;
 // mod example;
+mod switch;
+mod chk_if;
+mod chk_difficult_if;
+mod binary_op;
 
 // fn example(x: i32) -> i32 {
 //     dbg!(

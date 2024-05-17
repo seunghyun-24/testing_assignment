@@ -27,7 +27,7 @@ macro_rules! sort {
 fn main() {
 
     let values = repeat!(42; 5); // [42, 42, 42, 42, 42]
-    println!("{:?}", values);
+    //println!("{:?}", values);
 
     let x = 10;
     let y = "hello";
@@ -36,7 +36,7 @@ fn main() {
 
     let mut numbers = vec![4, 2, 7, 5, 1];
     numbers = sort!(numbers); // [1, 2, 4, 5, 7]
-    println!("{:?}", numbers);
+    //println!("{:?}", numbers);
 }
 
 // 와 매크로는 좀 신기하게 돌아가네 어떻게 측정하는거지?
