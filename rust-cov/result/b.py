@@ -53,7 +53,7 @@ def parse_and_mark_ast(file_path, covered_lines):
                     if_stmt_lines.append((start_line, end_line))
                     
                 if section == 'stmt':
-                    if any(start_line <= s_l <= end_line and start_line <= e_l <= end_line for (s_l, e_l) in if_stmt_lines):
+                    if any(s_l <= start_line <= e_l and s_l <= end_line <= e_l for (s_l, e_l) in if_stmt_lines):
                         marker += '    '
 
                 output_lines.append(f"{indent}{marker} {idx}: {start_line}:{start_col}-{end_line}:{end_col}\n")
