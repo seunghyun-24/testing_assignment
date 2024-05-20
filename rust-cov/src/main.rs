@@ -333,7 +333,7 @@ impl<'ast> Visit<'ast> for CoverageVisitor {
 }
 
 fn main() {
-    let contents = fs::read_to_string("example/chk_difficult_if.rs").expect("Something went wrong reading the file");
+    let contents = fs::read_to_string("example/if-let.rs").expect("Something went wrong reading the file");
     let syntax = syn::parse_file(&contents).expect("Unable to parse file");
 
     let mut visitor = CoverageVisitor {
